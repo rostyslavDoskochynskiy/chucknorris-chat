@@ -1,4 +1,4 @@
-import React from 'react';
+import { useEffect } from 'react';
 
 /** @description
  *
@@ -7,7 +7,7 @@ import React from 'react';
  * **/
 
 export const useWelcomeEffect = (setShowWelcomeScreen, delay) => {
-  React.useEffect(() => {
+  useEffect(() => {
     setTimeout(() => {
       setShowWelcomeScreen(false);
     }, delay);

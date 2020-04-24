@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import Containers from '@app/containers/Containers';
-import { Welcome } from '@app/containers/Main/Welcome';
+import { Containers } from '@app/containers/Containers';
+import { Welcome } from '@app/containers/Welcome';
 import { useWelcomeEffect } from '@app/shared/hooks/welcomeScreen';
 import { MainWrapper, Wrapper } from './style';
 
@@ -19,12 +19,10 @@ function App() {
     <MainWrapper>
       {showWelcomeScreen ? (
         <Wrapper>
-          <Welcome title="Hi. Thank you for watching. Be patient:)" />
+          <Welcome title="Hello. Hope you have a wonderful day. Be patient:)" />
         </Wrapper>
       ) : (
-        <>
-          <Containers />
-        </>
+        <Containers />
       )}
     </MainWrapper>
   );

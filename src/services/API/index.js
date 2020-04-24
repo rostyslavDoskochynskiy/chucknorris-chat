@@ -1,7 +1,7 @@
-import { users } from './users';
+import { messages } from './messages';
 
 export const API = {
-  users,
+  messages,
 };
 
 // App endpoints.
