@@ -74,7 +74,7 @@ const Chat = () => {
         ))}
       </ul>
 
-      {/* UI when Chuck is typing a message to me */}
+      {/* typing a message to me */}
       {typing && <em style={{ margin: '10px' }}>Chuck Norris is typing...</em>}
 
       {/* Input */}
