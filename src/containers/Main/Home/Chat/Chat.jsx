@@ -2,20 +2,28 @@ import React, { Fragment, useCallback, useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { onMessage, fetchMessages } from '@app/store/actions/messages/messages';
 import { notification } from '@app/store/actions/system';
-import { messagesSelector } from '@app/store/selectors/message/message';
+import { usernameSelector, messagesSelector } from '@app/store/selectors';
 import { Logout } from '@app/containers/Auth/Logout';
-import ChatForm from './ChatForm/ChatForm';
+import Form from './Form/Form';
 import { Message } from './Message';
 import './index.css';
 
 const Chat = () => {
   const messagesEndRef = useRef(null);
   const messages = useSelector(state => messagesSelector(state).data);
+  const username = useSelector(state => usernameSelector(state));
   const typing = useSelector(state => messagesSelector(state).fetching);
   const dispatch = useDispatch();
 
   const getMessages = useCallback(() => {
     dispatch(fetchMessages());
+    dispatch(
+      notification({
+        kind: 'success',
+        title: 'Success!',
+        message: 'Authorized successfully',
+      })
+    );
   }, [dispatch]);
 
   useEffect(() => {
@@ -27,14 +35,13 @@ const Chat = () => {
       messagesEndRef.current.scrollIntoView({ behavior: 'smooth' });
   }, [messages]);
 
-  const onMessageHandler = message => {
+  const onMessageHandler = async message => {
     try {
-      dispatch(onMessage(message));
+      await dispatch(onMessage(message));
       dispatch(
         notification({
-          kind: 'success',
           title: 'Hey!',
-          message: 'You\'ve got a new message from Chuck Norris 😄',
+          message: "You've got a new message from Chuck Norris 😄",
         })
       );
     } catch (e) {
@@ -42,7 +49,7 @@ const Chat = () => {
         notification({
           kind: 'error',
           title: 'Error!',
-          message: 'Chuck Norris is killing a bad guys. Try later :(',
+          message: 'Chuck Norris is killing a bad guys. Try later 😢',
         })
       );
     }
@@ -51,7 +58,7 @@ const Chat = () => {
   return (
     <section className="msger">
       <header className="msger-header">
-        <div className="msger-header-title">Chat with Chuck Norris</div>
+        <div className="msger-header-title">{username} with Chuck Norris</div>
         <Logout />
       </header>
 
@@ -78,7 +85,7 @@ const Chat = () => {
       {typing && <em style={{ margin: '10px' }}>Chuck Norris is typing...</em>}
 
       {/* Form */}
-      <ChatForm onEnter={onMessageHandler} />
+      <Form onEnter={onMessageHandler} />
     </section>
   );
 };

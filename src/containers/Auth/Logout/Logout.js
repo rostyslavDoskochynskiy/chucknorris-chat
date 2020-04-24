@@ -9,12 +9,7 @@ export const Logout = () => {
 
   return (
     <LogoutWrapper>
-      <Button
-        style={{ marginTop: '10px' }}
-        color="primary"
-        size="large"
-        onClick={() => dispatch(logout())}
-      >
+      <Button color="primary" size="large" onClick={() => dispatch(logout())}>
         Logout
       </Button>
     </LogoutWrapper>
