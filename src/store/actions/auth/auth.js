@@ -1,8 +1,9 @@
 import { USER_LOGIN, USER_LOGOUT } from '@app/store/actionTypes/auth';
 
 /** Actions creators **/
-const userLogin = () => ({
+const userLogin = (data) => ({
   type: USER_LOGIN,
+  data,
 });
 
 const userLogout = () => ({
@@ -10,18 +11,23 @@ const userLogout = () => ({
 });
 
 export const initialCheck = () => (dispatch) => {
-  const isAuth = JSON.parse(localStorage.getItem('isAuth') || null);
-  if (isAuth) {
-    dispatch(userLogin());
+  const auth = JSON.parse(localStorage.getItem('auth') || null);
+  if (auth && !!Object.keys(auth).length) {
+    dispatch(userLogin(auth));
   }
 };
 
-export const login = () => (dispatch) => {
-  localStorage.setItem('isAuth', 'true');
-  dispatch(userLogin());
+export const login = (credentials) => (dispatch) => {
+  const auth = {
+    credentials,
+    isAuth: true,
+  };
+  localStorage.setItem('auth', JSON.stringify(auth));
+  dispatch(userLogin(auth));
 };
 
 export const logout = () => (dispatch) => {
-  localStorage.setItem('isAuth', 'false');
+  localStorage.removeItem('auth');
+  localStorage.removeItem('messages');
   dispatch(userLogout());
 };
