@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect, useRef } from 'react';
+import React, { Fragment, useCallback, useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { onMessage, fetchMessages } from '@app/store/actions/messages/messages';
 import { notification } from '@app/store/actions/system';
@@ -14,9 +14,13 @@ const Chat = () => {
   const typing = useSelector(state => messagesSelector(state).fetching);
   const dispatch = useDispatch();
 
-  useEffect(() => {
+  const getMessages = useCallback(() => {
     dispatch(fetchMessages());
-  }, []);
+  }, [dispatch]);
+
+  useEffect(() => {
+    getMessages();
+  }, [getMessages]);
 
   useEffect(() => {
     messagesEndRef.current &&

@@ -11,13 +11,13 @@ export const Message = memo(({ time, text, avatar, userName, me }) => (
     />
     <div className="msg-bubble">
       <div className="msg-info">
-        <div className="msg-info-name">{userName}</div>
-        <div className="msg-info-time">{time}</div>
+        <span className="msg-info-name">{userName}</span>
+        <span className="msg-info-time">{time}</span>
       </div>
 
-      <div className="msg-text">
+      <span className="msg-text">
         {text} {me && '😄'}
-      </div>
+      </span>
     </div>
   </li>
 ));
