@@ -13,4 +13,3 @@ export const MainWrapper = styled.section`
   flex-direction: column;
   justify-content: space-between;
 `;
-
