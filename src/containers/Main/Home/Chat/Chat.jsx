@@ -47,9 +47,7 @@ const Chat = () => {
   return (
     <section className="msger">
       <header className="msger-header">
-        <div className="msger-header-title">
-          Welcome to chat with Chuck Norris
-        </div>
+        <div className="msger-header-title">Chat with Chuck Norris</div>
         <Logout />
       </header>
 

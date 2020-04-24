@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
-import { Input } from '@app/components';
+import SendIcon from '@material-ui/icons/Send';
+import { Input, Button } from '@app/components';
+import { Form } from './style';
 
 const ChatForm = ({ onEnter }) => {
   const [message, setMessage] = useState('');
@@ -12,33 +14,45 @@ const ChatForm = ({ onEnter }) => {
     setMessage(e.target.value);
   };
 
+  const sendMessage = () => {
+    if (!message) {
+      setError(true);
+      return setErrorText('Message cannot be empty');
+    }
+
+    onEnter(message);
+    setMessage('');
+  };
+
   const keyPressHandler = e => {
     if (e.key === 'Enter') {
       e.preventDefault();
-
-      if (!message) {
-        setError(true);
-        return setErrorText('Message cannot be empty');
-      }
-
-      onEnter(message);
-      setMessage('');
+      sendMessage();
     }
   };
 
   return (
-    <form noValidate autoComplete="off">
+    <Form noValidate autoComplete="off">
       <Input
         value={message}
         error={error}
         placeholder="Type your message"
-        helperText={errorText}
+        label={errorText}
         fullWidth
         variant="outlined"
         onChange={changeHandler}
         onKeyPress={keyPressHandler}
       />
-    </form>
+      <Button
+        style={{ marginTop: '10px' }}
+        color="primary"
+        size="small"
+        endIcon={<SendIcon />}
+        onClick={sendMessage}
+      >
+        Send
+      </Button>
+    </Form>
   );
 };
 
