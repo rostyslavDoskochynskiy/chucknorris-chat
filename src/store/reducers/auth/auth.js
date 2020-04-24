@@ -1,12 +1,16 @@
 import { USER_LOGIN, USER_LOGOUT } from '@app/store/actionTypes/auth';
 
 const defaultState = {
+  credentials: {
+    login: '',
+    password: '',
+  },
   isAuth: false,
 };
 
 const handlers = {
-  [USER_LOGIN]: (state) => ({ ...state, isAuth: true }),
-  [USER_LOGOUT]: (state) => ({ ...state, isAuth: false }),
+  [USER_LOGIN]: (state, { data }) => ({ ...data }),
+  [USER_LOGOUT]: () => defaultState,
   DEFAULT: (state) => state,
 };
 

@@ -4,6 +4,7 @@ import {
   MESSAGE_ERROR,
 } from '@app/store/actionTypes/message';
 import { saveMessage } from '@app/shared/utils';
+import { usernameSelector } from '@app/store/selectors';
 import moment from '@app/services/moment';
 import avatar from '@app/assets/img/ava.png';
 
@@ -24,7 +25,7 @@ export const messageError = (data) => ({
 
 export const onMessage = (message) => (dispatch, getState, { api }) => {
   const newMessage = {
-    userName: 'Rostyk',
+    userName: usernameSelector(getState()),
     me: true,
     id: new Date(),
     value: message,

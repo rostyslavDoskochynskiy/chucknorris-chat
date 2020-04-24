@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { routes } from '@app/config/routes';
 import { mainContainersRoutes } from './routesConfig';
 import { initialCheck } from '@app/store/actions/auth/auth';
-import { isAuthSelector } from '@app/store/selectors/auth/auth';
+import { isAuthSelector } from '@app/store/selectors';
 import { ErrorBoundary, Notification } from '@app/components';
 import { Login } from './Auth/Login';
 import { Main } from './style';

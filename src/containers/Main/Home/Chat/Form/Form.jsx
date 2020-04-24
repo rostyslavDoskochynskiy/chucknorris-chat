@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import SendIcon from '@material-ui/icons/Send';
 import { Input, Button } from '@app/components';
-import { Form } from './style';
+import { Form as FormWrapped } from './style';
 
-const ChatForm = ({ onEnter }) => {
+const Form = ({ onEnter }) => {
   const [message, setMessage] = useState('');
   const [error, setError] = useState(false);
   const [errorText, setErrorText] = useState('');
@@ -32,17 +32,20 @@ const ChatForm = ({ onEnter }) => {
   };
 
   return (
-    <Form noValidate autoComplete="off">
+    <FormWrapped noValidate autoComplete="off">
+      {/* Message Input */}
       <Input
         value={message}
         error={error}
         placeholder="Type your message"
+        variant="outlined"
         label={errorText}
         fullWidth
-        variant="outlined"
         onChange={changeHandler}
         onKeyPress={keyPressHandler}
       />
+
+      {/* Button Send */}
       <Button
         style={{ marginTop: '10px' }}
         color="primary"
@@ -52,8 +55,8 @@ const ChatForm = ({ onEnter }) => {
       >
         Send
       </Button>
-    </Form>
+    </FormWrapped>
   );
 };
 
-export default ChatForm;
+export default Form;
