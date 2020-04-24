@@ -2,7 +2,7 @@ import React from 'react';
 import { withRouter } from 'react-router-dom';
 import ReplayIcon from '@material-ui/icons/Replay';
 import { routes } from '@app/config/routes';
-import { AppText, Button } from '@app/components';
+import { Button } from '@app/components';
 import { ErrorBoundaryContainer } from './style';
 
 class ErrorBoundaryClass extends React.Component {
@@ -32,7 +32,7 @@ class ErrorBoundaryClass extends React.Component {
       return (
         <section className="error-boundary">
           <ErrorBoundaryContainer>
-            <AppText>Something went wrong.</AppText>
+            <p>Something went wrong.</p>
             <Button
               style={{ marginTop: '10px' }}
               color="primary"

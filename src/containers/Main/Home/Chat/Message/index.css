@@ -12,6 +12,10 @@
   padding: 10px;
 }
 
+.msg-text {
+  font-size: 13px;
+}
+
 .msg {
   display: flex;
   align-items: flex-end;

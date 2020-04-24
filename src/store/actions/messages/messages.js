@@ -4,6 +4,7 @@ import {
   MESSAGE_ERROR,
 } from '@app/store/actionTypes/message';
 import { saveMessage } from '@app/shared/utils';
+import moment from '@app/services/moment';
 import avatar from '@app/assets/img/ava.png';
 
 /** Actions creators **/
@@ -28,7 +29,7 @@ export const onMessage = (message) => (dispatch, getState, { api }) => {
     id: new Date(),
     value: message,
     icon_url: avatar,
-    created_at: new Date(),
+    sent: moment().format('LT'),
   };
 
   // Save my new message in localstorage
@@ -41,7 +42,10 @@ export const onMessage = (message) => (dispatch, getState, { api }) => {
     .getMessage()
     .then((res) => {
       // Save Chuck Norris new message in localstorage
-      const messages = saveMessage(res);
+      const messages = saveMessage({
+        ...res,
+        sent: moment().format('LT'),
+      });
       dispatch(messageSuccess(messages));
     })
     .catch((err) => {

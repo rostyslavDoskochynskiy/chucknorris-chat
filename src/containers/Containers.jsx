@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useCallback, useEffect } from 'react';
 import { Redirect, Switch } from 'react-router-dom';
 import { Route } from 'react-router';
 import { useDispatch, useSelector } from 'react-redux';
@@ -14,9 +14,13 @@ export const Containers = () => {
   const dispatch = useDispatch();
   const isAuth = useSelector(state => isAuthSelector(state));
 
-  useEffect(() => {
+  const initFetch = useCallback(() => {
     dispatch(initialCheck());
-  }, []);
+  }, [dispatch]);
+
+  useEffect(() => {
+    initFetch();
+  }, [initFetch]);
 
   if (!isAuth) {
     return (

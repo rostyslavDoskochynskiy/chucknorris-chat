@@ -13,13 +13,13 @@ function App() {
    *  to show, how we can create custom hooks and use them regarding
    *  to react-team recommendations
    * */
-  useWelcomeEffect(setShowWelcomeScreen, 3000);
+  useWelcomeEffect(setShowWelcomeScreen, 2000);
 
   return (
     <MainWrapper>
       {showWelcomeScreen ? (
         <Wrapper>
-          <Welcome title="Hello. Hope you have a wonderful day. Be patient:)" />
+          <Welcome title="Hello. Hope you're doing well. Be patient 😄" />
         </Wrapper>
       ) : (
         <Containers />
