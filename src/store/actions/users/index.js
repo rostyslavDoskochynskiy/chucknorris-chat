@@ -1,4 +1,4 @@
-import { fetchUsers } from './users';
+import { fetchUsers } from "./users";
 
 export const users = {
   ...fetchUsers,

@@ -1,6 +1,6 @@
 export const routes = {
   // Users.
   profile: {
-    users: '/users',
+    users: "/users",
   },
 };

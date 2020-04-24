@@ -1,6 +1,6 @@
-import { useEffect } from 'react';
-import { usersError } from '@app/store/actions/users/users';
-import { delay } from '@app/shared/utils';
+import { useEffect } from "react";
+import { usersError } from "@app/store/actions/users/users";
+import { delay } from "@app/shared/utils";
 
 /** @description
  * I transferred this effect from the container's component
@@ -21,18 +21,18 @@ export const useFetchUsers = ({
         if (res) {
           dispatch(
             notification({
-              kind: 'success',
-              title: 'Success!',
-              message: 'Users are successfully loaded',
+              kind: "success",
+              title: "Success!",
+              message: "Users are successfully loaded",
             })
           );
         } else {
           dispatch(usersError({}));
           dispatch(
             notification({
-              title: 'Info',
+              title: "Info",
               message:
-                'jsonplaceholder.typicode.com - took too long to respond. Try later',
+                "jsonplaceholder.typicode.com - took too long to respond. Try later",
             })
           );
         }
@@ -40,8 +40,8 @@ export const useFetchUsers = ({
         dispatch(
           notification({
             message,
-            kind: 'error',
-            title: 'Error!',
+            kind: "error",
+            title: "Error!",
           })
         );
       }

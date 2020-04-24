@@ -2,7 +2,7 @@ import {
   USERS_FETCH,
   USERS_SUCCESS,
   USERS_ERROR,
-} from '@app/store/actionTypes/users';
+} from "@app/store/actionTypes/users";
 
 const defaultState = {
   fetching: false,
@@ -11,7 +11,7 @@ const defaultState = {
 };
 
 const handlers = {
-  [USERS_FETCH]: state => ({ ...state, fetching: true }),
+  [USERS_FETCH]: (state) => ({ ...state, fetching: true }),
   [USERS_SUCCESS]: (state, { data }) => ({
     ...state,
     data,
@@ -23,7 +23,7 @@ const handlers = {
     fetching: false,
     data: [],
   }),
-  DEFAULT: state => state,
+  DEFAULT: (state) => state,
 };
 
 export const users = (state = defaultState, action) => {

@@ -1,4 +1,4 @@
-import UsersAPIService from './usersAPIService';
+import UsersAPIService from "./usersAPIService";
 
 const usersAPIService = new UsersAPIService();
 

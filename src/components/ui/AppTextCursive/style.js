@@ -1,5 +1,5 @@
-import styled from 'styled-components';
-import { JSONTreeDescriber } from '@app/services';
+import styled from "styled-components";
+import { JSONTreeDescriber } from "@app/services";
 
 export const Text = styled.i`
   font-family: monospace;
