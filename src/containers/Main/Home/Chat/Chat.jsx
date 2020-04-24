@@ -34,7 +34,7 @@ const Chat = () => {
         notification({
           kind: 'success',
           title: 'Hey!',
-          message: "You've got a new message from Chuck Norris :)",
+          message: 'You\'ve got a new message from Chuck Norris 😄',
         })
       );
     } catch (e) {
@@ -42,7 +42,7 @@ const Chat = () => {
         notification({
           kind: 'error',
           title: 'Error!',
-          message: 'Something went wrong. Try later :(',
+          message: 'Chuck Norris is killing a bad guys. Try later :(',
         })
       );
     }
@@ -77,7 +77,7 @@ const Chat = () => {
       {/* UI when Chuck is typing a message to me */}
       {typing && <em style={{ margin: '10px' }}>Chuck Norris is typing...</em>}
 
-      {/* Input */}
+      {/* Form */}
       <ChatForm onEnter={onMessageHandler} />
     </section>
   );
