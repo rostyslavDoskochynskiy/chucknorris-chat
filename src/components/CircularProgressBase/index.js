@@ -1,1 +1,1 @@
-export * from "./CircularProgressBase";
+export * from './CircularProgressBase';

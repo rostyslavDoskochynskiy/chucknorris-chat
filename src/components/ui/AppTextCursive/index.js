@@ -1,1 +1,1 @@
-export * from "./AppTextCursive";
+export * from './AppTextCursive';

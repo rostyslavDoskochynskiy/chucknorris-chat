@@ -1,23 +1,23 @@
-import { makeStyles } from "@material-ui/core/styles";
+import { makeStyles } from '@material-ui/core/styles';
 
 export const useStyles = makeStyles(() => ({
   panel: {
-    boxShadow: "none",
+    boxShadow: 'none',
 
-    "&:before": {
-      content: "none",
+    '&:before': {
+      content: 'none',
     },
   },
 
   panelSummary: {
     padding: 0,
     margin: 0,
-    maxHeight: "24px",
-    minHeight: "24px",
+    maxHeight: '24px',
+    minHeight: '24px',
 
-    "&.Mui-expanded": {
-      maxHeight: "24px",
-      minHeight: "24px",
+    '&.Mui-expanded': {
+      maxHeight: '24px',
+      minHeight: '24px',
     },
   },
 
@@ -27,7 +27,7 @@ export const useStyles = makeStyles(() => ({
   },
 
   panelDetails: {
-    padding: "8px 8px 8px 24px",
+    padding: '8px 8px 8px 24px',
   },
 
   button: {
