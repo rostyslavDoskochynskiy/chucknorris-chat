@@ -1,6 +1,6 @@
 export const Endpoints = {
   /**
-   * Fetch users.
+   * Fetch auth.
    */
-  FETCH_USERS: () => `https://jsonplaceholder.typicode.com/users`,
+  FETCH_MESSAGE: () => `https://api.chucknorris.io/jokes/random`,
 };

@@ -1,19 +1,32 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Redirect, Switch } from 'react-router-dom';
 import { Route } from 'react-router';
+import { useDispatch, useSelector } from 'react-redux';
 import { routes } from '@app/config/routes';
-import { Notification } from '@app/components/Notification';
-import { ErrorBoundary } from '@app/components/ErrorBoundary';
+import { mainContainersRoutes } from './config';
+import { initialCheck } from '@app/store/actions/auth/auth';
+import { isAuthSelector } from '@app/store/selectors/auth/auth';
+import { ErrorBoundary, Notification } from '@app/components';
+import { Login } from './Auth/Login';
 import { Main } from './style';
 
-const mainContainersRoutes = [
-  {
-    path: routes.profile.users,
-    component: () => <div>sdadq213231</div>
-  },
-];
+export const Containers = () => {
+  const dispatch = useDispatch();
+  const isAuth = useSelector(state => isAuthSelector(state));
 
-const Containers = () => {
+  useEffect(() => {
+    dispatch(initialCheck());
+  }, []);
+
+  if (!isAuth) {
+    return (
+      <Switch>
+        <Route path={routes.auth.login} component={Login} />
+        <Redirect to={routes.auth.login} />
+      </Switch>
+    );
+  }
+
   return (
     <ErrorBoundary>
       <Main>
@@ -21,12 +34,10 @@ const Containers = () => {
           {mainContainersRoutes.map((route, key) => (
             <Route {...route} key={key} />
           ))}
-          <Redirect to={routes.profile.users} />
+          <Redirect to={routes.profile.chat} />
         </Switch>
         <Notification />
       </Main>
     </ErrorBoundary>
   );
 };
-
-export default Containers;

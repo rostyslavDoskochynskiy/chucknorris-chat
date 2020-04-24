@@ -2,8 +2,7 @@ import React from 'react';
 import { withRouter } from 'react-router-dom';
 import ReplayIcon from '@material-ui/icons/Replay';
 import { routes } from '@app/config/routes';
-import { AppText } from '@app/components/ui/AppText';
-import { ButtonBase } from '../Button';
+import { AppText, Button } from '@app/components';
 import { ErrorBoundaryContainer } from './style';
 
 class ErrorBoundaryClass extends React.Component {
@@ -24,7 +23,7 @@ class ErrorBoundaryClass extends React.Component {
    * @description Redirect to Main page and render the app again.
    */
   skipError = () => {
-    this.props.history.push(routes.profile.users);
+    this.props.history.push(routes.chat);
     this.setState({ hasError: false });
   };
 
@@ -34,7 +33,7 @@ class ErrorBoundaryClass extends React.Component {
         <section className="error-boundary">
           <ErrorBoundaryContainer>
             <AppText>Something went wrong.</AppText>
-            <ButtonBase
+            <Button
               style={{ marginTop: '10px' }}
               color="primary"
               size="small"
@@ -42,7 +41,7 @@ class ErrorBoundaryClass extends React.Component {
               onClick={this.skipError}
             >
               Try again.
-            </ButtonBase>
+            </Button>
           </ErrorBoundaryContainer>
         </section>
       );

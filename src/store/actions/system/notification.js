@@ -1,7 +1,5 @@
-import * as notify from "react-notification-system-redux";
+import * as notify from 'react-notification-system-redux';
 
-export const notification = ({ kind = "info", ...notifyData }) => async (
+export const notification = ({ kind = 'info', ...notifyData }) => async (
   dispatch
-) => {
-  return dispatch(notify[kind](notifyData));
-};
+) => dispatch(notify[kind](notifyData));

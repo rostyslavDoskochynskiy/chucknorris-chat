@@ -1,6 +1,8 @@
 export const routes = {
-  // Users.
+  auth: {
+    login: '/auth/login',
+  },
   profile: {
-    users: "/users",
+    chat: '/profile/chat',
   },
 };
