@@ -7,7 +7,7 @@ import { MainWrapper, Wrapper } from './style';
 function App() {
   const [showWelcomeScreen, setShowWelcomeScreen] = useState(true);
 
-  /* Effect for welcome expandAll
+  /* Effect for welcome screen
    *  Note:
    *  This hook does not have any sense. I have created this
    *  to show, how we can create custom hooks and use them regarding

@@ -3,7 +3,7 @@ import { Redirect, Switch } from 'react-router-dom';
 import { Route } from 'react-router';
 import { useDispatch, useSelector } from 'react-redux';
 import { routes } from '@app/config/routes';
-import { mainContainersRoutes } from './config';
+import { mainContainersRoutes } from './routesConfig';
 import { initialCheck } from '@app/store/actions/auth/auth';
 import { isAuthSelector } from '@app/store/selectors/auth/auth';
 import { ErrorBoundary, Notification } from '@app/components';
