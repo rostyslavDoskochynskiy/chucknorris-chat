@@ -1,0 +1,26 @@
+{
+  "compileOnSave": true,
+  "compilerOptions": {
+    "baseUrl": "./src",
+    "paths": {
+      "@app/*": [
+        "src/*"
+      ]
+    },
+    "target": "es6",
+    "moduleResolution": "node",
+    "allowSyntheticDefaultImports": true,
+    "jsx": "react",
+    "noImplicitAny": false,
+    "sourceMap": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true
+  },
+  "exclude": [
+    "node_modules",
+    "build",
+    "coverage",
+    "dist",
+    "lib"
+  ]
+}

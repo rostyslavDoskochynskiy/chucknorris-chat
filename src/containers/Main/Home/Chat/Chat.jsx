@@ -49,7 +49,7 @@ const Chat = () => {
         notification({
           kind: 'error',
           title: 'Error!',
-          message: 'Chuck Norris is killing a bad guys. Try later 😢',
+          message: 'Chuck Norris is killing bad guys. Try later 😢',
         })
       );
     }

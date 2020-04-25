@@ -1,97 +1,49 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useDispatch } from 'react-redux';
+import { useFormik } from 'formik';
+import { validationSchema } from './validationSchema';
 import { login } from '@app/store/actions/auth/auth';
 import { Button, Input } from '@app/components';
-import { LoginWrapper, FieldBox } from './style';
+import { StyledForm, FieldBox } from './style';
 
 export const Login = () => {
   const dispatch = useDispatch();
-  const [loginVal, setLoginVal] = useState('');
-  const [password, setPassword] = useState('');
-  const [error, setError] = useState({
-    login: {
-      state: false,
-      text: '',
+  const { values, errors, handleChange, handleSubmit, handleBlur, isSubmitting } = useFormik({
+    validationSchema,
+    initialValues: {
+      login: '',
+      password: '',
     },
-    password: {
-      state: false,
-      text: '',
-    },
+    onSubmit: (values) => dispatch(login(values)),
   });
 
-  const resetErrors = () => {
-    return setError({
-      login: {
-        state: false,
-        text: '',
-      },
-      password: {
-        state: false,
-        text: '',
-      },
-    });
-  };
-
-  const loginHandler = () => {
-    if (!loginVal) {
-      setError((prevErr) => ({
-        ...prevErr,
-        login: {
-          state: true,
-          text: 'Incorrect login',
-        },
-      }));
-    }
-    if (!password) {
-      setError((prevErr) => ({
-        ...prevErr,
-        password: {
-          state: true,
-          text: 'Incorrect password',
-        },
-      }));
-    }
-
-    // If inputs are valid then login a user
-    if (loginVal && password) {
-      dispatch(
-        login({
-          password,
-          login: loginVal,
-        })
-      );
-    }
-  };
-
   return (
-    <LoginWrapper>
+    <StyledForm onSubmit={handleSubmit}>
       <div>
         <FieldBox>
           {/* Login Field */}
           <Input
-            value={loginVal}
-            error={error.login.state}
-            helperText={error.login.text}
             label="Login"
             variant="outlined"
-            onChange={(e) => {
-              resetErrors();
-              setLoginVal(e.target.value);
-            }}
+            name="login"
+            error={!!errors.login}
+            helperText={errors.login}
+            value={values.login}
+            onChange={handleChange}
+            onBlur={handleBlur}
           />
 
           {/* Password Field */}
           <Input
-            type="password"
-            value={password}
-            error={error.password.state}
-            helperText={error.password.text}
             label="Password"
             variant="outlined"
-            onChange={(e) => {
-              resetErrors();
-              setPassword(e.target.value);
-            }}
+            name="password"
+            type="password"
+            error={!!errors.password}
+            helperText={errors.password}
+            value={values.password}
+            onChange={handleChange}
+            onBlur={handleBlur}
           />
         </FieldBox>
 
@@ -99,13 +51,14 @@ export const Login = () => {
         <Button
           fullWidth
           style={{ marginTop: '10px' }}
+          type="submit"
           color="primary"
           variant="contained"
-          onClick={loginHandler}
+          disabled={isSubmitting || !!errors.login || !!errors.password}
         >
           Login
         </Button>
       </div>
-    </LoginWrapper>
+    </StyledForm>
   );
 };

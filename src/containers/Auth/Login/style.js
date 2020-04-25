@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const LoginWrapper = styled.div`
+const StyledForm = styled.form`
   height: 100%;
   display: flex;
   justify-content: center;
@@ -17,4 +17,4 @@ const FieldBox = styled.div`
   flex-direction: column;
 `;
 
-export { LoginWrapper, FieldBox };
+export { StyledForm, FieldBox };
