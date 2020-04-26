@@ -8,7 +8,15 @@ import { StyledForm, FieldBox } from './style';
 
 export const Login = () => {
   const dispatch = useDispatch();
-  const { values, errors, handleChange, handleSubmit, handleBlur, isSubmitting } = useFormik({
+  const {
+    values,
+    errors,
+    touched,
+    handleChange,
+    handleSubmit,
+    handleBlur,
+    isSubmitting,
+  } = useFormik({
     validationSchema,
     initialValues: {
       login: '',
@@ -26,8 +34,8 @@ export const Login = () => {
             label="Login"
             variant="outlined"
             name="login"
-            error={!!errors.login}
-            helperText={errors.login}
+            error={!!errors.login && !!touched.login}
+            helperText={errors.login && touched.login && errors.login}
             value={values.login}
             onChange={handleChange}
             onBlur={handleBlur}
@@ -39,8 +47,8 @@ export const Login = () => {
             variant="outlined"
             name="password"
             type="password"
-            error={!!errors.password}
-            helperText={errors.password}
+            error={!!errors.password && !!touched.password}
+            helperText={errors.password && touched.password && errors.password}
             value={values.password}
             onChange={handleChange}
             onBlur={handleBlur}
