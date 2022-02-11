@@ -19,7 +19,9 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 - Login feature
 
 Sample credentials:
+
 Login - test@gmail.com (Must be as email)
+
 Password - !Admin (Must contain 1 capital and 1 special symbol)
 
 2. Home Page
